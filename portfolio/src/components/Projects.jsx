@@ -7,8 +7,10 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+
 function Projects() {
   const [activeTab, setActiveTab] = useState('tech');
+  const [activeFlyers, setActiveFlyers] = useState('ogv');
 
   const programmingProjects = [
     {
@@ -43,31 +45,69 @@ function Projects() {
     }
   ];
   
-  const aiesecFlyers = [
+  const ogvFlyers = [
     {
-      title: "Global Volunteer Program",
-      description: "Promotional flyer for AIESEC's international volunteer opportunities.",
-      impact: "Increased program applications by 25% in the target demographic."
+      title: "Tunisia OGV",
+      description: "Promotional flyer for AIESEC's volunteer opportunities in Tunisia.",
+      image: "/Flyer-01-Tunisia.png",
+      country: "Tunisia"
     },
     {
-      title: "Leadership Summit 2024",
-      description: "Event promotional material for AIESEC's annual leadership conference.",
-      impact: "Helped achieve record attendance with 300+ participants."
+      title: "Indonesia OGV",
+      description: "Promotional materials for volunteer programs in Indonesia.",
+      image: "/Flyer-02-Indonesia.png",
+      country: "Indonesia"
     },
     {
-      title: "Cultural Exchange Initiative",
-      description: "Campaign materials for cross-cultural learning programs.",
-      impact: "Supported 50+ successful international exchanges."
+      title: "Egypt OGV",
+      description: "Educational volunteer opportunities in Egypt.",
+      image: "/Flyer-03-Egypt.png",
+      country: "Egypt"
     },
     {
-      title: "SDG Awareness Campaign",
-      description: "Educational flyers on Sustainable Development Goals.",
-      impact: "Increased campus engagement with sustainability initiatives."
+      title: "Morocco OGV",
+      description: "Cultural volunteer experiences in Morocco.",
+      image: "/Flyer-04-Morocco.png",
+      country: "Morocco"
     },
     {
-      title: "Local Volunteer Recruitment",
-      description: "Recruitment materials for new AIESEC members.",
-      impact: "Contributed to 40% growth in local chapter membership."
+      title: "Thailand OGV",
+      description: "Environmental volunteer programs in Thailand.",
+      image: "/Flyer-05-Thailand.png",
+      country: "Thailand"
+    }
+  ];
+  
+  const ogtFlyers = [
+    {
+      title: "Marketing Internship",
+      description: "International marketing internship opportunities.",
+      image: "/Flyer-09-OGT.png", 
+      field: "Marketing"
+    },
+    {
+      title: "Graphic Design",
+      description: "Global graphic design professional experiences.",
+      image: "/Flyer-06-OGT.png",
+      field: "Design"
+    },
+    {
+      title: "Business Development",
+      description: "Business development internships worldwide.",
+      image: "/Flyer-07-OGT.png",
+      field: "Business"
+    },
+    {
+      title: "IT Development",
+      description: "Technology and development internships globally.",
+      image: "/Flyer-08-OGT.png",
+      field: "IT"
+    },
+    {
+      title: "Product Management",
+      description: "Product management professional experiences.",
+      image: "/Flyer-02-OGT.png",
+      field: "Product"
     }
   ];
   
@@ -106,7 +146,6 @@ function Projects() {
       transition: { duration: 1.5, ease: "easeInOut" }
     }
   };
-  
   return (
     <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen relative overflow-hidden">
       {/* Animated background effect */}
@@ -125,7 +164,7 @@ function Projects() {
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-400 mx-auto"></div>
         </motion.div>
         
-        {/* Tab switcher */}
+        {/* Main tab switcher */}
         <div className="flex justify-center mb-12 relative">
           <div className="bg-black/50 backdrop-blur-sm border border-cyan-400/30 rounded-full p-1 flex gap-2 relative">
             {/* Active tab indicator */}
@@ -227,69 +266,151 @@ function Projects() {
               exit="exit"
               className="w-full"
             >
-              <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={'auto'}
-                coverflowEffect={{
-                  rotate: 20,
-                  stretch: 0,
-                  depth: 200,
-                  modifier: 1,
-                  slideShadows: true,
-                }}
-                pagination={{ clickable: true }}
-                navigation={true}
-                modules={[EffectCoverflow, Pagination, Navigation]}
-                className="mySwiper w-full py-12"
-              >
-                {aiesecFlyers.map((flyer, index) => (
-                  <SwiperSlide key={index} className="w-3/4 md:w-1/2 lg:w-2/5">
-                    <div className="bg-black border-2 border-fuchsia-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400 group relative h-96">
-                      {/* Placeholder for flyer image - replace with actual images */}
-                      <div className="h-full w-full bg-gradient-to-br from-cyan-900/30 to-fuchsia-900/30 flex items-center justify-center">
-                        <span className="text-6xl text-fuchsia-400/70 font-bold">
-                          {flyer.title.split(' ').map(word => word[0]).join('')}
-                        </span>
-                      </div>
-                      
-                      {/* Glowing hover effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-fuchsia-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      {/* Caption */}
-                      <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 border-t border-cyan-400/30">
-                        <h3 className="text-xl font-semibold mb-2 text-fuchsia-400">{flyer.title}</h3>
-                        <p className="text-green-400/80 text-sm mb-2">{flyer.description}</p>
-                        <p className="text-cyan-400 text-xs">{flyer.impact}</p>
-                      </div>
-                      
-                      {/* Digital scan effect */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/5 to-transparent opacity-0 group-hover:animate-scan"></div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              
-              {/* Info text */}
-              <div className="text-center mt-8 text-cyan-400/80">
-                <p>Click on a flyer to view details. Swipe or use arrows to navigate.</p>
+              {/* AIESEC Flyer Type Selector */}
+              <div className="flex justify-center mb-8">
+                <div className="bg-black/50 backdrop-blur-sm border border-fuchsia-400/30 rounded-full p-1 flex gap-2 relative">
+                  {/* Active flyer type indicator */}
+                  <motion.div 
+                    className="absolute h-full top-0 bottom-0 rounded-full bg-gradient-to-r from-fuchsia-400/20 to-cyan-400/20 z-0"
+                    initial={{ width: "50%", left: activeFlyers === 'ogv' ? "0%" : "50%" }}
+                    animate={{ left: activeFlyers === 'ogv' ? "0%" : "50%" }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  />
+                  
+                  {/* OGV Flyers Tab */}
+                  <motion.button
+                    onClick={() => setActiveFlyers('ogv')}
+                    className={`px-4 py-2 text-md font-medium z-10 relative ${activeFlyers === 'ogv' ? 'text-white' : 'text-fuchsia-400/50'}`}
+                    variants={tabVariants}
+                    animate={activeFlyers === 'ogv' ? 'active' : 'inactive'}
+                  >
+                    Global Volunteer
+                  </motion.button>
+                  
+                  {/* OGT Flyers Tab */}
+                  <motion.button
+                    onClick={() => setActiveFlyers('ogt')}
+                    className={`px-4 py-2 text-md font-medium z-10 relative ${activeFlyers === 'ogt' ? 'text-white' : 'text-fuchsia-400/50'}`}
+                    variants={tabVariants}
+                    animate={activeFlyers === 'ogt' ? 'active' : 'inactive'}
+                  >
+                    Global Talent
+                  </motion.button>
+                </div>
               </div>
+
+              <AnimatePresence mode="wait">
+                {activeFlyers === 'ogv' && (
+                  <motion.div
+                    key="ogv-flyers"
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    <Swiper
+                      effect={'coverflow'}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={'auto'}
+                      coverflowEffect={{
+                        rotate: 20,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 1,
+                        slideShadows: true,
+                      }}
+                      pagination={{ clickable: true }}
+                      navigation={true}
+                      modules={[EffectCoverflow, Pagination, Navigation]}
+                      className="mySwiper w-full py-12"
+                    >
+                      {ogvFlyers.map((flyer, index) => (
+                        <SwiperSlide key={index} className="w-3/4 md:w-1/2 lg:w-2/5">
+                          <div className="bg-black border-2 border-fuchsia-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400 group relative h-96">
+                            {/* Actual flyer image with fallback */}
+                            <div className="relative h-full w-full overflow-hidden">
+                              {/* Using a div with background image as fallback if Next Image component isn't used */}
+                              <div 
+                                className="h-full w-full bg-cover bg-center"
+                                style={{ backgroundImage: `url(${flyer.image})` }}
+                              >
+                                {/* Digital circuit overlay effect */}
+                                <div className="absolute inset-0 bg-circuit-pattern opacity-10"></div>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4">
+                              <h3 className="text-lg font-semibold text-fuchsia-400">{flyer.title}</h3>
+                              <p className="text-green-400/80 text-sm">{flyer.description}</p>
+                              <div className="mt-2">
+                                <span className="bg-black border border-cyan-400/50 text-cyan-400 text-xs px-2 py-1 rounded-full">
+                                  {flyer.country}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </motion.div>
+                )}
+                
+                {activeFlyers === 'ogt' && (
+                  <motion.div
+                    key="ogt-flyers"
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    <Swiper
+                      effect={'coverflow'}
+                      grabCursor={true}
+                      centeredSlides={true}
+                      slidesPerView={'auto'}
+                      coverflowEffect={{
+                        rotate: 20,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 1,
+                        slideShadows: true,
+                      }}
+                      pagination={{ clickable: true }}
+                      navigation={true}
+                      modules={[EffectCoverflow, Pagination, Navigation]}
+                      className="mySwiper w-full py-12"
+                    >
+                      {ogtFlyers.map((flyer, index) => (
+                        <SwiperSlide key={index} className="w-3/4 md:w-1/2 lg:w-2/5">
+                          <div className="bg-black border-2 border-cyan-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-fuchsia-400 group relative h-96">
+                            <div className="relative h-full w-full overflow-hidden">
+                              <div 
+                                className="h-full w-full bg-cover bg-center"
+                                style={{ backgroundImage: `url(${flyer.image})` }}
+                              >
+                                <div className="absolute inset-0 bg-circuit-pattern opacity-10"></div>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4">
+                              <h3 className="text-lg font-semibold text-cyan-400">{flyer.title}</h3>
+                              <p className="text-green-400/80 text-sm">{flyer.description}</p>
+                              <div className="mt-2">
+                                <span className="bg-black border border-fuchsia-400/50 text-fuchsia-400 text-xs px-2 py-1 rounded-full">
+                                  {flyer.field}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-      
-      {/* Add this to your global CSS */}
-      <style jsx>{`
-        @keyframes scan {
-          0% { top: -100%; opacity: 0.5; }
-          100% { top: 100%; opacity: 0; }
-        }
-        .animate-scan {
-          animation: scan 1.5s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }

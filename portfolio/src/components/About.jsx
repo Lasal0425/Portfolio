@@ -66,29 +66,52 @@ function About() {
       </section>
 
       {/* About Content Section */}
-      <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-3xl font-bold mb-6 text-fuchsia-400">About Me</h3>
-                <p className="text-green-400 mb-6">
-                  A passionate and proactive IT professional with hands-on experience in software engineering, 
-                  IT security, Data mining, Machine Learning and full-stack development. Driven to excel in 
-                  dynamic environments, I aim to contribute to impactful projects while expanding my technical 
-                  expertise.
-                </p>
-                <p className="text-green-400">
-                  Committed to innovation and continuous learning, I bring a valuable mix of skills 
-                  and adaptability to any team.
-                </p>
-              </div>
+<section className="py-20 bg-black text-green-400 border-t border-cyan-400/20">
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <h3 className="text-3xl font-bold mb-6 text-fuchsia-400">About Me</h3>
+          <p className="text-green-400 mb-6">
+            A passionate and proactive IT professional with hands-on experience in software engineering, 
+            IT security, Data mining, Machine Learning and full-stack development. Driven to excel in 
+            dynamic environments, I aim to contribute to impactful projects while expanding my technical 
+            expertise.
+          </p>
+          <p className="text-green-400">
+            Committed to innovation and continuous learning, I bring a valuable mix of skills 
+            and adaptability to any team.
+          </p>
+        </div>
+        
+        {/* Add profile picture here */}
+        <div className="flex items-center justify-center">
+          <div className="relative">
+            {/* Glowing border effect */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-400 blur-md opacity-70 animate-pulse"></div>
+            
+            {/* Profile image */}
+            <img 
+              src="/Profile_pic.JPG" 
+              alt="Lasal Rathnayake" 
+              className="w-64 h-64 object-cover rounded-full border-2 border-cyan-400 relative z-10"
+            />
+            
+            {/* Digital circuit pattern overlay */}
+            <div className="absolute inset-0 bg-circuit-pattern opacity-20 rounded-full mix-blend-overlay z-20"></div>
+            
+            {/* Binary code effect */}
+            <div className="absolute -bottom-4 -right-4 bg-black/80 text-green-400 px-3 py-1 rounded-full text-xs font-mono border border-green-400/50 z-30">
+            01001100 01010010
             </div>
           </div>
         </div>
-      </section>
-    </>
-  );
+      </div>
+    </div>
+  </div>
+</section>
+</>
+);
 }
 
 export default About;

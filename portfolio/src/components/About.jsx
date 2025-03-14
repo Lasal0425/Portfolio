@@ -5,13 +5,25 @@ import { motion } from "framer-motion";
 function About() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center bg-black text-green-400 px-4">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="min-h-screen flex flex-col items-center justify-center bg-black text-green-400 px-4 relative"
+      >
+        {/* Image component instead of background style */}
+        <img
+          src="/Background.jpeg"
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        
+        {/* Dark overlay to ensure text remains readable */}
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, ease: "easeOut" }} 
-          className="text-center"
+          className="text-center relative z-10"
         >
           <h2 className="text-5xl font-bold mb-2">Hello, I'm</h2>
           <h1 className="text-7xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 inline-block text-transparent bg-clip-text mb-6">
@@ -51,7 +63,7 @@ function About() {
         </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 animate-bounce cursor-pointer"
+        <div className="absolute bottom-10 animate-bounce cursor-pointer z-10"
           onClick={() =>{
             window.scrollTo({
               top: window.innerHeight,
@@ -66,52 +78,52 @@ function About() {
       </section>
 
       {/* About Content Section */}
-<section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen">
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h3 className="text-4xl font-bold mb-6 text-fuchsia-400">About Me</h3>
-          <p className="text-green-400 mb-6">
-            A passionate and proactive IT professional with hands-on experience in software engineering, 
-            IT security, Data mining, Machine Learning and full-stack development. Driven to excel in 
-            dynamic environments, I aim to contribute to impactful projects while expanding my technical 
-            expertise.
-          </p>
-          <p className="text-green-400">
-            Committed to innovation and continuous learning, I bring a valuable mix of skills 
-            and adaptability to any team.
-          </p>
-        </div>
-        
-        {/* Add profile picture here */}
-        <div className="flex items-center justify-center">
-          <div className="relative">
-            {/* Glowing border effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-400 blur-md opacity-70 animate-pulse"></div>
-            
-            {/* Profile image */}
-            <img 
-              src="/Profile_pic.JPG" 
-              alt="Lasal Rathnayake" 
-              className="w-64 h-64 object-cover rounded-full border-2 border-cyan-400 relative z-10 "
-            />
-            
-            {/* Digital circuit pattern overlay */}
-            <div className="absolute inset-0 bg-circuit-pattern opacity-20 rounded-full mix-blend-overlay z-20"></div>
-            
-            {/* Binary code effect */}
-            <div className="absolute -bottom-4 -right-4 bg-black/80 text-green-400 px-3 py-1 rounded-full text-xs font-mono border border-green-400/50 z-30">
-            01001100 01010010
+      <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-4xl font-bold mb-6 text-fuchsia-400">About Me</h3>
+                <p className="text-green-400 mb-6">
+                  A passionate and proactive IT professional with hands-on experience in software engineering, 
+                  IT security, Data mining, Machine Learning and full-stack development. Driven to excel in 
+                  dynamic environments, I aim to contribute to impactful projects while expanding my technical 
+                  expertise.
+                </p>
+                <p className="text-green-400">
+                  Committed to innovation and continuous learning, I bring a valuable mix of skills 
+                  and adaptability to any team.
+                </p>
+              </div>
+              
+              {/* Add profile picture here */}
+              <div className="flex items-center justify-center">
+                <div className="relative">
+                  {/* Glowing border effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-400 blur-md opacity-70 animate-pulse"></div>
+                  
+                  {/* Profile image */}
+                  <img 
+                    src="/Profile_pic.JPG" 
+                    alt="Lasal Rathnayake" 
+                    className="w-64 h-64 object-cover rounded-full border-2 border-cyan-400 relative z-10 "
+                  />
+                  
+                  {/* Digital circuit pattern overlay */}
+                  <div className="absolute inset-0 bg-circuit-pattern opacity-20 rounded-full mix-blend-overlay z-20"></div>
+                  
+                  {/* Binary code effect */}
+                  <div className="absolute -bottom-4 -right-4 bg-black/80 text-green-400 px-3 py-1 rounded-full text-xs font-mono border border-green-400/50 z-30">
+                  01001100 01010010
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-</>
-);
+      </section>
+    </>
+  );
 }
 
 export default About;

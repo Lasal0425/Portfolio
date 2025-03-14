@@ -5,7 +5,7 @@ function Header({ currentPage, setCurrentPage }) {
   return (
     <header className="bg-gray-900 text-white py-4 w-full">
       <div className="w-full flex justify-between items-center px-8">
-        <h1 className="text-2xl font-bold">Lasal Rathnayake</h1>
+        <h1 className="text-2xl font-bold">LR</h1>
         <nav>
           <ul className="flex space-x-6">
             <li>

@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 function Projects() {
   const [activeTab, setActiveTab] = useState('tech');
   const [activeFlyers, setActiveFlyers] = useState('ogv');
+  const [previewImage, setPreviewImage] = useState(null);
 
   const programmingProjects = [
     {
@@ -44,7 +45,15 @@ function Projects() {
       technologies: ["Python", "Machine Learning"]
     }
   ];
-  
+
+  const openPreview = (imageSrc) => {
+    setPreviewImage(imageSrc);
+  };
+
+  const closePreview = () => {
+    setPreviewImage(null);
+  };
+
   const ogvFlyers = [
     {
       title: "Tunisia OGV",
@@ -151,6 +160,27 @@ function Projects() {
       {/* Animated background effect */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5 z-0"></div>
       
+       {/* Full screen preview modal */}
+       {previewImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={closePreview}
+        >
+          <div className="relative max-w-4xl max-h-screen">
+            <button 
+              className="absolute top-4 right-4 text-white bg-red-500 rounded-full w-8 h-8 flex items-center justify-center"
+              onClick={closePreview}
+            >
+              ×
+            </button>
+            <img 
+              src={previewImage} 
+              alt="Flyer preview" 
+              className="max-w-full max-h-[90vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
@@ -327,7 +357,9 @@ function Projects() {
                     >
                       {ogvFlyers.map((flyer, index) => (
                         <SwiperSlide key={index} className="w-3/4 md:w-1/2 lg:w-2/5">
-                          <div className="bg-black border-2 border-fuchsia-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400 group relative h-96">
+                          <div className="bg-black border-2 border-fuchsia-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400 group relative h-96 cursor-pointer"
+                          onClick={() => openPreview(flyer.image)}
+                          >
                             {/* Actual flyer image with fallback */}
                             <div className="relative h-full w-full overflow-hidden">
                               {/* Using a div with background image as fallback if Next Image component isn't used */}
@@ -382,7 +414,9 @@ function Projects() {
                     >
                       {ogtFlyers.map((flyer, index) => (
                         <SwiperSlide key={index} className="w-3/4 md:w-1/2 lg:w-2/5">
-                          <div className="bg-black border-2 border-cyan-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-fuchsia-400 group relative h-96">
+                          <div className="bg-black border-2 border-fuchsia-400/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400 group relative h-96 cursor-pointer"
+                          onClick={() => openPreview(flyer.image)}
+                          >
                             <div className="relative h-full w-full overflow-hidden">
                               <div 
                                 className="h-full w-full bg-cover bg-center"

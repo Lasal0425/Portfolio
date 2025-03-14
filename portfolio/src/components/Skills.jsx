@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Skills() {
   const frontendSkills = [
     { name: "HTML5", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },

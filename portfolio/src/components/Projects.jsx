@@ -1,5 +1,6 @@
 // components/Projects.js
 import React from 'react';
+import { motion } from "framer-motion";
 
 function Projects() {
   const projects = [
@@ -36,25 +37,52 @@ function Projects() {
   ];
   
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">My Projects</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 inline-block text-transparent bg-clip-text mb-4">
+            My Projects
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-400 mx-auto"></div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-black border border-green-400/30 rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-400/70 group relative"
+            >
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-fuchsia-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Digital circuit pattern overlay */}
+              <div className="absolute inset-0 bg-circuit-pattern opacity-5 mix-blend-overlay"></div>
+              
+              <div className="p-6 relative z-10">
+                <h3 className="text-xl font-semibold mb-3 text-fuchsia-400">{project.title}</h3>
+                <p className="text-green-400/80 mb-4 text-sm">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, i) => (
-                    <span key={i} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                    <span key={i} className="bg-black border border-cyan-400/50 text-cyan-400 text-xs px-2 py-1 rounded-full">
                       {tech}
                     </span>
                   ))}
                 </div>
+                
+                {/* Binary code effect */}
+                <div className="absolute bottom-2 right-2 text-green-400/30 text-xs font-mono">
+                  01011
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

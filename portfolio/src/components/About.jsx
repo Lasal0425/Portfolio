@@ -2,6 +2,10 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import Skills from './Skills';
+import Projects from './Projects';
+import Contact from './Contact';
+import Footer from './Footer';
+
 function About() {
   return (
     <>
@@ -122,6 +126,10 @@ function About() {
           </div>
         </div>
       </section>
+      <Skills/>
+      <Projects/>
+      <Contact/>
+      <Footer/>
     </>
   );
 }

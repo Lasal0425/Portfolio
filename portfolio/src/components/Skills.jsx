@@ -27,7 +27,7 @@ function Skills() {
   ];
   
   return (
-    <section className="py-16 bg-black text-green-400 border-t border-cyan-400/20">
+    <section className="py-16 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 inline-block text-transparent bg-clip-text">MY SKILLS</h2>

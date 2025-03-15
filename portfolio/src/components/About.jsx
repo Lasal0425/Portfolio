@@ -27,7 +27,7 @@ function About() {
         >
           <h2 className="text-5xl font-bold mb-2">Hello, I'm</h2>
           <h1 className="text-7xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 inline-block text-transparent bg-clip-text mb-6">
-            Lasal Rathnayake!
+            Lasal Rathnayake
           </h1>
           <p className="text-xl max-w-2xl mx-auto mb-12">
             Inspire with Innovation, Empower with Execution

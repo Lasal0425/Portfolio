@@ -56,12 +56,6 @@ function Projects() {
 
   const ogvFlyers = [
     {
-      title: "Tunisia OGV",
-      description: "Promotional flyer for AIESEC's volunteer opportunities in Tunisia.",
-      image: "/Flyer-01-Tunisia.png",
-      country: "Tunisia"
-    },
-    {
       title: "Indonesia OGV",
       description: "Promotional materials for volunteer programs in Indonesia.",
       image: "/Flyer-02-Indonesia.png",
@@ -91,32 +85,50 @@ function Projects() {
     {
       title: "Marketing Internship",
       description: "International marketing internship opportunities.",
-      image: "/Flyer-09-OGT.png", 
+      image: "/Flyer-09-OGT.jpg", 
       field: "Marketing"
     },
     {
-      title: "Graphic Design",
-      description: "Global graphic design professional experiences.",
-      image: "/Flyer-06-OGT.png",
-      field: "Design"
+      title: "Graphic Designer", 
+      description: "International graphic designing opportunity", 
+      image: "/Flyer-06-OGT.jpg",
+      field: "Designing"  
     },
     {
       title: "Business Development",
       description: "Business development internships worldwide.",
-      image: "/Flyer-07-OGT.png",
+      image: "/Flyer-07-OGT.jpg",
       field: "Business"
     },
     {
       title: "IT Development",
       description: "Technology and development internships globally.",
-      image: "/Flyer-08-OGT.png",
+      image: "/Flyer-08-OGT.jpg",
       field: "IT"
     },
     {
       title: "Product Management",
       description: "Product management professional experiences.",
-      image: "/Flyer-02-OGT.png",
+      image: "/Flyer-02-OGT.jpg",
       field: "Product"
+    },
+    {
+      title: "Software Engineer",
+      description: "Software Engineer opportunity.",
+      image: "/Flyer-05-OGT.jpg",
+      field: "IT"
+    },
+    {
+      title: "UI/UX Intern",
+      description: "UI/UX intern opprotunity.",
+      image: "/Flyer-03-OGT.jpg",
+      field: "IT"
+    },
+    {
+      title: "Junior Developer",
+      description: "Job Opportunity.",
+      image: "/Flyer-04-OGT.jpg",
+      field: "IT"
     }
   ];
   
@@ -222,14 +234,14 @@ function Projects() {
               )}
             </motion.button>
             
-            {/* AIESEC Projects Tab */}
+            {/* Graphic Designs Tab */}
             <motion.button
               onClick={() => setActiveTab('aiesec')}
               className={`px-6 py-2 text-lg font-medium z-10 relative ${activeTab === 'aiesec' ? 'text-white' : 'text-cyan-400/50'}`}
               variants={tabVariants}
               animate={activeTab === 'aiesec' ? 'active' : 'inactive'}
             >
-              AIESEC Designs
+              Graphic Designs 
               {activeTab === 'aiesec' && (
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 to-transparent opacity-0 rounded-full"

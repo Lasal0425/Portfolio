@@ -234,14 +234,14 @@ function Projects() {
               )}
             </motion.button>
             
-            {/* Graphic Designs Tab */}
+            {/* AIESEC Designs Tab */}
             <motion.button
               onClick={() => setActiveTab('aiesec')}
               className={`px-6 py-2 text-lg font-medium z-10 relative ${activeTab === 'aiesec' ? 'text-white' : 'text-cyan-400/50'}`}
               variants={tabVariants}
               animate={activeTab === 'aiesec' ? 'active' : 'inactive'}
             >
-              Graphic Designs 
+              AIESEC Designs 
               {activeTab === 'aiesec' && (
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 to-transparent opacity-0 rounded-full"

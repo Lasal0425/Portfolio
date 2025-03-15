@@ -9,17 +9,10 @@ import Footer from './Footer';
 function About() {
   return (
     <>
-      {/* Hero Section with Background Image */}
+      {/* Hero Section without Background Image */}
       <section 
         className="min-h-screen flex flex-col items-center justify-center bg-black text-green-400 px-4 relative"
       >
-        {/* Image component instead of background style */}
-        <img
-          src="/Background.jpeg"
-          alt="Background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        
         {/* Dark overlay to ensure text remains readable */}
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
         
@@ -81,9 +74,19 @@ function About() {
         </div>
       </section>
 
-      {/* About Content Section */}
-      <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen">
-        <div className="container mx-auto px-4">
+      {/* About Content Section with Background Image */}
+      <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen relative">
+        {/* Image component as background */}
+        <img
+          src="/Background.jpeg"
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        
+        {/* Dark overlay to ensure text remains readable */}
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>

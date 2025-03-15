@@ -78,7 +78,7 @@ function About() {
       <section className="py-20 bg-black text-green-400 border-t border-cyan-400/20 min-h-screen relative">
         {/* Image component as background */}
         <img
-          src="/Background.jpeg"
+          src="./Background.jpeg"
           alt="Background"
           className="absolute inset-0 w-full h-full object-cover"
         />

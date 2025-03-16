@@ -28,7 +28,11 @@ function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          to: 'lasalrathnayake@gmail.com',
+          subject: `Contact Form Message from ${formData.name}`,
+          ...formData
+        }),
       });
       
       const data = await response.json();
@@ -189,6 +193,7 @@ function Contact() {
                 </div>
               )}
             </form>
+            
             
             {/* Binary code effect */}
             <div className="absolute bottom-2 right-2 text-green-400/30 text-xs font-mono">

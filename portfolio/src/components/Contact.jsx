@@ -8,18 +8,43 @@ function Contact() {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real implementation, you would send this data to a server
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      // Send form data to your API endpoint
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitStatus({ success: true, message: 'Thank you for your message! I will get back to you soon.' });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus({ success: false, message: data.message || 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus({ success: false, message: 'An error occurred while sending your message. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -151,11 +176,18 @@ function Contact() {
               
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-cyan-400/80 to-fuchsia-400/80 hover:from-cyan-400 hover:to-fuchsia-400 text-black font-medium py-2 px-4 rounded-md transition duration-300 relative overflow-hidden group"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-cyan-400/80 to-fuchsia-400/80 hover:from-cyan-400 hover:to-fuchsia-400 text-black font-medium py-2 px-4 rounded-md transition duration-300 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <span className="absolute top-0 left-0 w-full h-full bg-white/10 transform -skew-x-12 transition-transform duration-700 ease-out group-hover:translate-x-full"></span>
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+              
+              {submitStatus && (
+                <div className={`mt-4 p-3 rounded-md ${submitStatus.success ? 'bg-green-400/10 text-green-400' : 'bg-red-400/10 text-red-400'}`}>
+                  {submitStatus.message}
+                </div>
+              )}
             </form>
             
             {/* Binary code effect */}

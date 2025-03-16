@@ -194,7 +194,6 @@ function Contact() {
               )}
             </form>
             
-            
             {/* Binary code effect */}
             <div className="absolute bottom-2 right-2 text-green-400/30 text-xs font-mono">
               01001101 01100101 01110011 01110011 01100001 01100111 01100101

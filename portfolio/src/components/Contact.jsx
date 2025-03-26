@@ -87,14 +87,14 @@ function Contact() {
                 </div>
                 +94 710 792 783
               </div>
-              <div className="flex items-center mb-4 hover:text-cyan-400 transition-colors duration-300">
+              <a href="mailto:lasalrathnayake@gmail.com" className="flex items-center mb-4 hover:text-cyan-400 transition-colors duration-300">
                 <div className="h-10 w-10 rounded-full flex items-center justify-center border border-green-400/30 mr-3">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
-                lasalrathnayake@gmail.com
-              </div>
+               lasalrathnayake@gmail.com
+              </a>
               <div className="flex items-center mb-4 hover:text-cyan-400 transition-colors duration-300">
                 <div className="h-10 w-10 rounded-full flex items-center justify-center border border-green-400/30 mr-3">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

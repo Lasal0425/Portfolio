@@ -58,14 +58,11 @@ function About() {
             </a>
             {/* CV Download Button */}
             <a 
-              href="/Lasal_CV.pdf" 
-              download 
-              className="h-12 w-12 rounded-full flex items-center justify-center border border-green-400/30 hover:bg-green-400/10 transition-all duration-300"
+               href="/Lasal_CV.pdf" 
+               download 
+               className="h-12 px-4 rounded-full flex items-center justify-center border border-green-400/30 hover:bg-green-400/10 transition-all duration-300 text-sm font-medium"
             >
-              {/* Download Icon */}
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+               CV
             </a>
           </motion.div>
         </motion.div>

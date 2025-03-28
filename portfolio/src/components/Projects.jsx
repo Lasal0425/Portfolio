@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { image } from 'framer-motion/client';
 
 
 function Projects() {
@@ -78,6 +79,12 @@ function Projects() {
       description: "Environmental volunteer programs in Thailand.",
       image: "/Flyer-05-Thailand.png",
       country: "Thailand"
+    },
+    {
+      title: "India OGV",
+      description: "The tasteness of India.",
+      image: "/Flyer-07-India.png",
+      country: "India"
     }
   ];
   

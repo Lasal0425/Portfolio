@@ -85,6 +85,12 @@ function Projects() {
       description: "The tasteness of India.",
       image: "/Flyer-07-India.png",
       country: "India"
+    },
+    {
+      title: "Egypt OGV",
+      description: "Discover your Passions",
+      image: "/Flyer-11-Egypt.png",
+      country: "Egypt"
     }
   ];
   

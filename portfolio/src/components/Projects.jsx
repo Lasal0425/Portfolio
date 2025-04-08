@@ -136,6 +136,12 @@ function Projects() {
       description: "Job Opportunity.",
       image: "/Flyer-04-OGT.jpg",
       field: "IT"
+    },
+    {
+      title: "UI/UX Designer",
+      description: "Job Opportunity.",
+      image: "/Flyer-17-OGT.jpg",
+      field: "IT"
     }
   ];
   

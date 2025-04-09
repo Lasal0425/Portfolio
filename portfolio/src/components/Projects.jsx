@@ -85,6 +85,12 @@ function Projects() {
       description: "Discover your Passions",
       image: "/Flyer-11-Egypt.png",
       country: "Egypt"
+    },
+    {
+      title: "Indonesia OGV",
+      description: "Discover yourself",
+      image: "/Flyer-08-Indonesia.png",
+      country: "Indonesia"
     }
   ];
   

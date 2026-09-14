@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — "Latent Space" concept.
+ *
+ * Dark is the primary reading mode (the embedding-space metaphor reads best
+ * against near-black), light is a fully designed alternate, not an
+ * afterthought. Every color used anywhere in the UI should resolve through
+ * one of these variables — no magic hex values in components.
+ *
+ * Theme switching is class-based (`next-themes`, attribute="class"), so the
+ * dark palette lives under `.dark` and wins regardless of prefers-color-scheme,
+ * while an OS-only fallback covers the instant before the class is applied.
+ */
+
+:root {
+  /* Light mode (default) */
+  --color-bg: #f6f5f1; /* paper */
+  --color-bg-raised: #ffffff;
+  --color-fg: #14171c; /* text */
+  --color-fg-muted: #565b63;
+  --color-border: #dcdad2;
+
+  /* Accents — used sparingly, one job each */
+  --color-accent: #ab4a1e; /* burnt orange — current node, citation highlight (darkened for 4.5:1 AA text contrast on light bg) */
+  --color-edge: #4f6f6c; /* muted sage-teal — connections between related nodes (darkened for AA on light bg) */
+
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+.dark {
+  --color-bg: #0e1116; /* ink */
+  --color-bg-raised: #161a20;
+  --color-fg: #e7e5dd; /* warm off-white */
+  --color-fg-muted: #8a8f98;
+  --color-border: #262b33;
+
+  --color-accent: #e8734a; /* full-brightness on dark */
+  --color-edge: #6b8f8c;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-raised: var(--color-bg-raised);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
+  --color-edge: var(--color-edge);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
+
+/* Respect reduced-motion everywhere; components must not rely solely on
+   this to disable motion, but this is the last line of defense. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

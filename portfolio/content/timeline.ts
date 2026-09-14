@@ -1,0 +1,190 @@
+import type { Organisation } from "./schema";
+
+/**
+ * Verbatim from Lasal's LinkedIn (brief §3) — titles, dates, and locations
+ * are not reworded or rounded. Overlapping dates within AIESEC are real
+ * (concurrent roles), not a data error.
+ *
+ * `featured: true` surfaces a role by default; the rest sit behind a
+ * "+N more roles" disclosure (brief: progressive disclosure, not omission).
+ * The four AIESEC roles marked featured are exactly the engineering track
+ * the brief calls out by name: Dev Team Lead, Software Engineer Team
+ * Leader, Software Engineer, and IGVP Digital Experience.
+ *
+ * `bullets` are empty until Lasal supplies them (brief §9, question 3) —
+ * an honest title + dates beats an invented accomplishment.
+ */
+export const timeline: Organisation[] = [
+  {
+    id: "nebule",
+    name: "Nebule",
+    location: "8 The Green, Suite B, Dover, Delaware, United States",
+    totalDuration: "1 yr 3 mos total",
+    roles: [
+      {
+        id: "nebule-swe-trainee",
+        title: "Software Engineer Trainee",
+        startDate: "Dec 2025",
+        endDate: "Present",
+        workMode: "Remote",
+        track: "engineering",
+        featured: true,
+        skills: [],
+        bullets: [],
+        // TODO(lasal): what did you actually build here, and what's safe
+        // to say publicly? (brief §9, question 2) — strongest credential,
+        // currently has zero detail.
+      },
+      {
+        id: "nebule-swe-intern",
+        title: "Software Engineer Intern",
+        startDate: "Jul 2025",
+        endDate: "Dec 2025",
+        workMode: "Remote",
+        track: "engineering",
+        featured: true,
+        skills: [],
+        bullets: [],
+      },
+    ],
+  },
+  {
+    id: "aiesec-sri-lanka",
+    name: "AIESEC in Sri Lanka",
+    totalDuration: "2 yrs 1 mo total",
+    roles: [
+      {
+        id: "aiesec-dev-team-lead",
+        title: "Dev Team Lead",
+        employmentType: "Full-time",
+        startDate: "Aug 2026",
+        endDate: "Present",
+        location: "Colombo, Western Province, Sri Lanka",
+        workMode: "Hybrid",
+        track: "engineering",
+        featured: true,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-graphic-designer-nst",
+        title: "Graphic Designer, National Showcasing Team",
+        employmentType: "Part-time",
+        startDate: "Apr 2026",
+        endDate: "Aug 2026",
+        workMode: "Remote",
+        track: "design",
+        featured: false,
+        skills: [],
+        bullets: [],
+        note: "Kept as a one-line role for range — the poster/flyer work itself isn't shown as portfolio pieces (brief §2).",
+      },
+      {
+        id: "aiesec-swe-team-leader",
+        title: "Software Engineer Team Leader",
+        employmentType: "Part-time",
+        startDate: "Feb 2026",
+        endDate: "Jul 2026",
+        location: "Colombo District, Western Province, Sri Lanka",
+        workMode: "Hybrid",
+        track: "engineering",
+        featured: true,
+        skills: ["Software Development", "Project Management"],
+        bullets: [],
+      },
+      {
+        id: "aiesec-ccm-marketing-natcon2026",
+        title: "Core Committee Member, Marketing — NatCon 2026",
+        employmentType: "Full-time",
+        startDate: "Dec 2025",
+        endDate: "Apr 2026",
+        track: "leadership",
+        featured: false,
+        skills: [],
+        bullets: [],
+        projectSlug: "natcon-website",
+      },
+      {
+        id: "aiesec-swe",
+        title: "Software Engineer",
+        employmentType: "Part-time",
+        startDate: "Aug 2025",
+        endDate: "Feb 2026",
+        location: "Sri Lanka",
+        track: "engineering",
+        featured: true,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-igvp-digital-experience",
+        title: "Initiative Group Vice President, Digital Experience for AIESEC in IIT",
+        employmentType: "Full-time",
+        startDate: "Feb 2025",
+        endDate: "Feb 2026",
+        track: "engineering",
+        featured: true,
+        skills: [],
+        bullets: [],
+        note: "Management Board of AIESEC in IIT, term 25.26",
+      },
+      {
+        id: "aiesec-conference-manager-voyage25",
+        title: "Conference Manager, Voyage'25 of AIESEC in IIT",
+        employmentType: "Part-time",
+        startDate: "Sep 2025",
+        endDate: "Dec 2025",
+        track: "leadership",
+        featured: false,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-ocvp-marketing-voyage24",
+        title: "Organizing Committee Vice President (Marketing), Voyage'24 of AIESEC in IIT",
+        employmentType: "Part-time",
+        startDate: "Nov 2024",
+        endDate: "Feb 2025",
+        track: "leadership",
+        featured: false,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-tl-marketing",
+        title: "Team Leader, Marketing — AIESEC in IIT",
+        employmentType: "Full-time",
+        startDate: "Oct 2024",
+        endDate: "Feb 2025",
+        track: "leadership",
+        featured: false,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-tl-people-management",
+        title: "Team Leader, People Management — AIESEC in IIT",
+        employmentType: "Full-time",
+        startDate: "Oct 2024",
+        endDate: "Feb 2025",
+        location: "Sri Lanka",
+        workMode: "On-site",
+        track: "leadership",
+        featured: false,
+        skills: [],
+        bullets: [],
+      },
+      {
+        id: "aiesec-member",
+        title: "Member",
+        employmentType: "Full-time",
+        startDate: "Sep 2024",
+        endDate: "Feb 2025",
+        track: "member",
+        featured: false,
+        skills: [],
+        bullets: [],
+      },
+    ],
+  },
+];

@@ -27,4 +27,14 @@ export const posts: Post[] = [
     readTimeMinutes: 5,
     tags: ["financial discipline", "Colombo Stock Exchange", "investing journey"],
   },
+  {
+    slug: "rag-pipeline",
+    title: "How the \"Ask about my work\" assistant is built",
+    kind: "engineering",
+    source: "site",
+    url: "/writing/rag-pipeline",
+    publishedAt: "2026-09-14",
+    readTimeMinutes: 6,
+    tags: ["rag", "gemini", "embeddings", "pgvector-free"],
+  },
 ];

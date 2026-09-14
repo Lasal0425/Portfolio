@@ -1,0 +1,31 @@
+## The problem
+
+AIESEC in Sri Lanka's National Conference 2026 needed a live site — registration, delegate room lookup, a merch store with checkout, and sponsor/partner pages — on a fixed date that doesn't move. Starting from a blank Next.js app on a conference timeline means building routing, a cart context, and a checkout flow from zero before writing a single line of NatCon-specific content.
+
+## Starting point: a fork, not a rewrite
+
+This is a fork of [yashbim/nlds-website](https://github.com/yashbim/nlds-website), the previous year's conference site — same underlying stack (Next.js, Supabase, a cart context, a merch store), reused deliberately instead of rebuilt, because the previous year's team had already solved the boring, load-bearing parts: routing, a working checkout flow, a partner-logo grid. Forking meant NatCon 2026 could spend its build time on what was actually new, not on re-deriving a shopping cart.
+
+What "new" turned out to mean, comparing against the upstream repo directly: 75 commits, 146 files touched, +3,679/−1,787 lines.
+
+<ArchitectureDiagram rows={'[{"title": "added", "stages": [{"label": "/rooms", "note": "767-line rewrite"}, {"label": "/title-partner", "note": "new page"}, {"label": "Registration states", "note": "open/closed/soon"}]}, {"title": "rebuilt", "stages": [{"label": "Store + checkout"}, {"label": "Resend email", "note": "order confirm"}, {"label": "Partner + merch assets", "note": "full refresh"}]}]'} />
+
+## What actually changed
+
+**A delegate room-lookup page (`/rooms`)** that didn't exist upstream — a 767-line rewrite of the rooms component alone, for finding which room a delegate is assigned to.
+
+**A title-partner page and component** (`TitlePartner.tsx`, 229 new lines) for NatCon's top-tier sponsor, absent from the base site.
+
+**Registration handled as three real states** instead of one: open, closed, and "opening soon" (a new `RegistrationsOpeningSoon` component) — because a conference registration page has a real lifecycle before and after the window is live, not just a single static form.
+
+**The store, checkout, and order-confirmation flow rewritten**, wired to Resend for the confirmation email rather than the upstream implementation, alongside a full replacement of merch product photography and partner logos for NatCon's own sponsors — the previous year's assets don't carry over to a different event.
+
+**Kept current on the stack**: Next.js was upgraded from 15.4.6 to 16.1.3 partway through, not left on whatever version the fork started on.
+
+## Decisions
+
+**Fork over rewrite.** The honest tradeoff: inheriting an existing codebase's structure (and its rough edges) in exchange for a working checkout flow and routing on day one, instead of a cleaner from-scratch architecture that would have cost real time a fixed-date conference site doesn't have.
+
+> TODO(lasal): what would you change if you rebuilt this from scratch — is
+> the fork's structure something you'd keep, or is there a specific piece
+> (the cart context, the checkout flow) you'd redo cleanly next time?

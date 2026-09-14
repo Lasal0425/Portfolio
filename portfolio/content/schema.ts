@@ -145,7 +145,10 @@ export const postSchema = z.object({
   title: z.string(),
   kind: postKindSchema,
   source: postSourceSchema,
-  url: z.string().url(), // external link; "site" posts point at /writing/[slug]
+  // External link for dev.to/medium; a relative path (e.g. "/writing/foo")
+  // for "site" posts — not .url(), since that would reject the relative
+  // form Next's <Link> expects for internal posts.
+  url: z.string().min(1),
   publishedAt: z.string(), // ISO date
   readTimeMinutes: z.number().optional(),
   tags: z.array(z.string()).default([]),

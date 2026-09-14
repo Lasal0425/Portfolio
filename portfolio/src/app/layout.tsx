@@ -34,6 +34,25 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  description: profile.tagline,
+  url: siteUrl,
+  image: `${siteUrl}${profile.headshotUrl}`,
+  address: { "@type": "PostalAddress", addressLocality: profile.location },
+  email: profile.email,
+  sameAs: [profile.links.github, profile.links.linkedin, profile.links.devto, profile.links.medium],
+  alumniOf: profile.education?.show
+    ? {
+        "@type": "CollegeOrUniversity",
+        name: profile.education.institution,
+      }
+    : undefined,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -45,6 +64,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SiteHeader />
           <div className="flex-1">{children}</div>

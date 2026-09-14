@@ -1,0 +1,27 @@
+## The problem
+
+Most RAG demos assume you're fine sending your documents to someone else's API. `knowledge_assistant` doesn't: it's a local-first system for querying your own PDFs, running entirely on your own machine — no document leaves it, and there's no per-query API bill.
+
+## Architecture
+
+Two separate pipelines share one vector store.
+
+<ArchitectureDiagram rows={'[{"title": "ingest", "stages": [{"label": "PDFs", "note": "data/"}, {"label": "Recursive splitter", "note": "chunk"}, {"label": "Ollama embeddings"}, {"label": "pgvector", "note": "Postgres"}]}, {"title": "query", "stages": [{"label": "FastAPI endpoint"}, {"label": "pgvector search", "note": "top-k"}, {"label": "LCEL chain", "note": "LangChain"}, {"label": "Llama 3", "note": "Ollama"}]}]'} />
+
+Ingestion loads PDFs from a local directory, splits them into chunks with a recursive text splitter, embeds each chunk with an Ollama embedding model, and stores the vectors in Postgres via the `pgvector` extension. The query side is a FastAPI endpoint: it embeds the incoming question, retrieves the nearest chunks from `pgvector`, and runs the result through a LangChain Expression Language (LCEL) chain that augments the prompt with the retrieved context before calling Llama 3 through Ollama.
+
+## Decisions
+
+**Ollama over a hosted LLM API.** Everything runs locally — no OpenAI or Anthropic key, no cost per query, no document ever leaving the machine it's running on. The tradeoff is throughput: a local model on consumer hardware won't serve concurrent users the way a hosted API scales, which is fine for a personal document assistant and would be the wrong call for something meant to serve traffic.
+
+**Postgres + pgvector over a dedicated vector database.** One database to run and back up instead of two separate systems (a relational store for metadata and a standalone vector DB). For a corpus that fits comfortably in Postgres, that's less operational surface for no real capability loss.
+
+**LCEL over hand-rolled prompt strings.** LangChain's expression language composes the retrieval step and the generation step into one declarative chain rather than manually string-formatting a prompt with retrieved context spliced in.
+
+## What I'd change
+
+> TODO(lasal): this is the part only you can fill in honestly — what broke
+> during ingestion or retrieval, any latency or scale numbers you've
+> actually observed, and what you'd do differently with what you know now.
+> Real specifics here, whenever you have them, are worth more than anything
+> written from just reading the code.

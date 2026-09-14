@@ -1,0 +1,24 @@
+## What this actually predicts
+
+The repo is named "detection," but it's worth being precise: this isn't detecting whether a tumor is malignant from imaging. It's predicting outcomes for patients already diagnosed — whether a patient survives (`Mortality_Status`) and how many months they survive (`Survival_Months`) — from a clinical dataset of 4,024 breast cancer patients: tumor stage, grade, hormone-receptor status, age, and node counts.
+
+## Architecture
+
+<ArchitectureDiagram rows={'[{"title": "prep", "stages": [{"label": "4,024 patients", "note": "18 columns"}, {"label": "Clean + impute", "note": "median/mode"}, {"label": "One-hot encode"}]}, {"title": "classify", "stages": [{"label": "NB / LogReg / KNN", "note": "grid search"}, {"label": "Voting ensemble"}, {"label": "Mortality: alive/dead"}]}, {"title": "regress", "stages": [{"label": "Decision tree", "note": "full vs. pruned"}, {"label": "Survival months"}]}]'} />
+
+Two tasks share the same cleaned dataset: a classification pass predicting mortality outcome (Naive Bayes, Logistic Regression, and KNN, each grid-searched, combined into a voting ensemble), and a regression pass predicting survival months (a fully-grown decision tree compared against a pruned one).
+
+## The result — and a data leak worth naming
+
+An earlier pass of the notebook trains the classifier on `Survival_Months` as an input feature and reports 88.9% accuracy. That number doesn't hold up: `Survival_Months` is a near-direct proxy for the mortality label itself — a patient with very few survival months is, almost by definition, one who died. Training on it isn't predicting mortality from clinical features, it's mostly reading the answer off an adjacent column.
+
+A later pass drops `Survival_Months` from the classifier's inputs. That's the honest number:
+
+- **Classification accuracy: 85.0%** (voting ensemble of Logistic Regression + KNN), **AUC 0.68**
+- **Survival regression: RMSE 22.9 months** (pruned decision tree — the fully-grown tree overfit badly enough to score a *negative* R², meaning it did worse than just predicting the average)
+
+An AUC of 0.68 is real but modest — noticeably short of the leaked run's apparent performance, which is exactly the point: the gap between 88.9% and 85.0% is the size of the leak, not a modeling improvement lost.
+
+## What I'd change
+
+Pruning mattered more than model choice here — the fully-grown decision tree overfitting to a negative R² while the pruned version reached 0.019 is a bigger swing than the difference between any two classifiers tried. Worth trying next: a regularized model (Ridge/Lasso) for the regression side instead of a single tree, and checking whether other columns carry similar leakage before trusting any accuracy number that looks unusually good.

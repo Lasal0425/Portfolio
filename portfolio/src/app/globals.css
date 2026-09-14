@@ -58,6 +58,24 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Citation jump target (brief §6: clicking a citation scrolls and
+   highlights the source). Timeline sections carry a real id per
+   organisation already, so this is the whole mechanism — no JS needed —
+   for any citation whose URL ends in #anchor. The fade is a one-shot
+   @starting-style transition, not a looping animation. */
+@keyframes citation-highlight-fade {
+  from {
+    background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  }
+  to {
+    background: transparent;
+  }
+}
+:target {
+  animation: citation-highlight-fade 2.5s ease-out;
+  border-radius: 0.5rem;
+}
+
 /* Respect reduced-motion everywhere; components must not rely solely on
    this to disable motion, but this is the last line of defense. */
 @media (prefers-reduced-motion: reduce) {

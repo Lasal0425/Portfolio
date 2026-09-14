@@ -1,0 +1,29 @@
+The "Ask about my work" assistant on this site is a real RAG pipeline, not a wrapper around a chat API with the whole site pasted into the prompt. Here's exactly how it works.
+
+## Corpus and chunking
+
+The source material is everything real on this site: the profile, every timeline role (including bullets and notes), every project's summary and metrics, the actual case-study MDX bodies, and post metadata — not the external posts' full text, since those are linked out to rather than mirrored. Referee contact information from the resume PDF is deliberately excluded from the corpus; that's two other people's personal phone numbers, not content this assistant has any business surfacing.
+
+Each source document is split on sentence boundaries into chunks capped at 120 words, with the section's own title and a citation URL carried alongside every chunk. Most documents — a single timeline role, a project summary — fit in one chunk; only the longer case studies actually split into several.
+
+<ArchitectureDiagram rows={'[{"title": "ingest (offline)", "stages": [{"label": "Content files", "note": "profile, timeline, projects"}, {"label": "Sentence chunker", "note": "120-word cap"}, {"label": "gemini-embedding-001"}, {"label": "embeddings.json", "note": "committed to repo"}]}, {"title": "query (live)", "stages": [{"label": "Question"}, {"label": "Embed + cosine search", "note": "in-memory"}, {"label": "gemini-flash-latest", "note": "streamed"}, {"label": "Answer + citations"}]}]'} />
+
+## Embedding model and storage
+
+Chunks are embedded with `gemini-embedding-001` via an offline ingest script (`npm run ingest`), and the resulting vectors are written to `content/index/embeddings.json` — a prebuilt index committed to the repo, not a live database. That's a deliberate choice: this corpus is a few dozen chunks, small enough that a flat in-memory cosine-similarity scan finds the best matches instantly, with no pgvector instance or Postgres connection to provision, pay for, or keep alive. If the corpus ever grew into the thousands of chunks, that tradeoff would flip — this is sized for what the site actually contains, not for scale it doesn't have.
+
+## Retrieval and generation
+
+At request time, the question itself gets embedded with the same model, compared against every chunk's vector, and the top 5 matches are pulled as context. There's no reranking step — for a corpus this small, a straight cosine-similarity top-k is already precise enough that a second reranking pass wouldn't change which chunks get selected often enough to justify the extra latency and API call.
+
+The retrieved chunks and the question go to `gemini-flash-latest` with a system instruction that limits it to answering from the provided context and saying so when the context doesn't cover the question, rather than guessing. The response streams token by token back to the browser, and the UI shows the real retrieval count ("Searched 5 chunks…") before the answer starts — not a fake typing indicator.
+
+Every citation in an answer links to the actual site section it came from; clicking one navigates there and highlights it.
+
+## Reliability
+
+No API key client-side, ever — the whole thing runs behind this site's own route handler. Requests are rate-limited per IP (10 per minute), and output is capped at 500 tokens. If the API key is missing, the prebuilt index hasn't been generated yet, or a live request fails for any reason, the assistant falls back to a small set of honest, prewritten answers instead of an error page or a dead input box — the same UI, the same citation links, just sourced from a static file instead of a live model call.
+
+## Cost per query
+
+Both models used — `gemini-embedding-001` and `gemini-flash-latest` — run on Gemini's free tier, which comfortably covers what a personal portfolio actually receives in traffic. Cost per query, as deployed here, is $0.

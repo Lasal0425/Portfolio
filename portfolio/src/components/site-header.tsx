@@ -7,6 +7,7 @@ const NAV = [
   { href: "/timeline", label: "Timeline" },
   { href: "/projects", label: "Projects" },
   { href: "/writing", label: "Writing" },
+  { href: "/ask", label: "Ask" },
 ];
 
 export function SiteHeader() {

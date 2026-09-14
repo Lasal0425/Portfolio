@@ -25,10 +25,10 @@ export const profile: Profile = {
       logoUrl: "/logos/westminster-logo.svg",
     },
     yearOfStudy: "4th year undergraduate",
-    // TODO(lasal): exact degree title and start/end dates.
-    degree: undefined,
-    startDate: undefined,
-    endDate: undefined,
+    // Confirmed from the resume PDF already in the repo.
+    degree: "BSc (Hons) Computer Science",
+    startDate: "2023",
+    endDate: "Present",
     show: true,
   },
 };

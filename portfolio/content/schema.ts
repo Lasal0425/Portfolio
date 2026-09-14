@@ -36,9 +36,19 @@ export const profileSchema = z.object({
   education: z
     .object({
       institution: z.string(),
-      degree: z.string(),
-      startDate: z.string(),
-      endDate: z.string(),
+      logoUrl: z.string().optional(), // path under /public
+      // Degree programmes run jointly with a foreign university (common for
+      // Sri Lankan private higher-ed) are named here rather than invented
+      // as a second "employer" — e.g. "University of Westminster".
+      affiliatedWith: z
+        .object({ name: z.string(), logoUrl: z.string().optional() })
+        .optional(),
+      // TODO(lasal): exact degree title and start/end dates — only "4th
+      // year undergraduate" has been confirmed so far.
+      degree: z.string().optional(),
+      yearOfStudy: z.string().optional(),
+      startDate: z.string().optional(),
+      endDate: z.string().optional(),
       show: z.boolean().default(true),
     })
     .optional(),
@@ -83,6 +93,7 @@ export const organisationSchema = z.object({
   id: z.string(),
   name: z.string(),
   location: z.string().optional(),
+  logoUrl: z.string().optional(), // path under /public
   // Verbatim total duration string from the source (e.g. "1 yr 3 mos total"),
   // not recomputed — overlapping concurrent roles make computing this from
   // the individual role dates unreliable.

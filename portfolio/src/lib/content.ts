@@ -10,8 +10,11 @@ import {
   type Organisation,
   type Project,
   type Post,
+  type Role,
 } from "../../content/schema";
 import { z } from "zod";
+
+export type { Organisation, Project, Post, Role };
 
 /**
  * Every content file is parsed against its Zod schema here, once, at import

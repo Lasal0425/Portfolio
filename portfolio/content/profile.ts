@@ -3,10 +3,10 @@ import type { Profile } from "./schema";
 export const profile: Profile = {
   name: "Lasal Rathnayake",
   role: "AI Engineer",
-  // TODO(lasal): replace with the real hero line — one sentence specific
-  // enough to exclude 90% of CS students (brief §7). Placeholder for now
-  // so Phase 2 has something to lay out against.
-  tagline: "AI engineer building LLM applications, RAG pipelines, and agent architectures.",
+  // Drawn directly from the brief's own positioning statement (§1), not
+  // invented — worth a pass of your own editing once the site is live.
+  tagline:
+    "I build LLM applications, RAG pipelines, and agent systems — and the backend that keeps them running in production.",
   location: "Colombo, Sri Lanka",
   email: "lasalrathnayake@gmail.com",
   links: {
@@ -17,7 +17,18 @@ export const profile: Profile = {
   },
   resumeUrl: "/Lasal_CV.pdf",
   headshotUrl: "/headshot.jpg",
-  // TODO(lasal): confirm institution, exact degree title, dates, and
-  // whether to show this section at all (brief §9, question 4).
-  education: undefined,
+  education: {
+    institution: "Informatics Institute of Technology, Sri Lanka",
+    logoUrl: "/logos/iit-logo.png",
+    affiliatedWith: {
+      name: "University of Westminster",
+      logoUrl: "/logos/westminster-logo.svg",
+    },
+    yearOfStudy: "4th year undergraduate",
+    // TODO(lasal): exact degree title and start/end dates.
+    degree: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    show: true,
+  },
 };

@@ -19,6 +19,7 @@ export const timeline: Organisation[] = [
     id: "nebule",
     name: "Nebule",
     location: "8 The Green, Suite B, Dover, Delaware, United States",
+    logoUrl: "/logos/nebule-primary.png",
     totalDuration: "1 yr 3 mos total",
     roles: [
       {
@@ -30,10 +31,9 @@ export const timeline: Organisation[] = [
         track: "engineering",
         featured: true,
         skills: [],
-        bullets: [],
-        // TODO(lasal): what did you actually build here, and what's safe
-        // to say publicly? (brief §9, question 2) — strongest credential,
-        // currently has zero detail.
+        bullets: ["Built the nebule.co company website."],
+        // TODO(lasal): anything more specific safe to say publicly about
+        // this build (stack, scope, what it replaced)? (brief §9, q2)
       },
       {
         id: "nebule-swe-intern",
@@ -51,6 +51,7 @@ export const timeline: Organisation[] = [
   {
     id: "aiesec-sri-lanka",
     name: "AIESEC in Sri Lanka",
+    logoUrl: "/logos/aiesec-logo-blue.png",
     totalDuration: "2 yrs 1 mo total",
     roles: [
       {

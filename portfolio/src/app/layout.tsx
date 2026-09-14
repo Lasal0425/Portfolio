@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { profile } from "@/lib/content";
 import "./globals.css";
 
 const plexSans = IBM_Plex_Sans({
@@ -25,10 +28,7 @@ export const metadata: Metadata = {
     default: "Lasal Rathnayake — AI Engineer",
     template: "%s — Lasal Rathnayake",
   },
-  // TODO(lasal): tighten this once the hero copy (Phase 2) and featured
-  // projects (Phase 4) are locked — this is a placeholder description.
-  description:
-    "AI engineer building LLM applications, RAG pipelines, and agent architectures.",
+  description: profile.tagline,
   icons: {
     icon: "/favicon.ico",
   },
@@ -44,9 +44,11 @@ export default function RootLayout({
       className={`${plexSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen antialiased">
+      <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

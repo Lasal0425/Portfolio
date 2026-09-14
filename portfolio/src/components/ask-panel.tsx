@@ -23,6 +23,10 @@ interface Exchange {
   usedFallback: boolean;
   streaming: boolean;
   error?: string;
+  // Set when generation failed after some real tokens had already
+  // reached the client — the partial answer above is real and stays
+  // visible; this is an honest note, not a replacement for it.
+  interrupted?: string;
 }
 
 async function streamAsk(
@@ -92,6 +96,8 @@ export function AskPanel() {
         } else if (evt.type === "error") {
           current.error = evt.message as string;
           current.streaming = false;
+        } else if (evt.type === "interrupted") {
+          current.interrupted = evt.message as string;
         } else if (evt.type === "done") {
           current.streaming = false;
         }
@@ -163,6 +169,9 @@ export function AskPanel() {
                   <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-[var(--color-fg-muted)] align-middle" />
                 )}
               </p>
+            )}
+            {ex.interrupted && (
+              <p className="mt-1 text-xs italic text-[var(--color-fg-muted)]">{ex.interrupted}</p>
             )}
 
             {ex.citations.length > 0 && (

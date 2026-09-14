@@ -51,7 +51,7 @@ export async function getSourceDocuments(): Promise<SourceDocument[]> {
       ].filter(Boolean);
       docs.push({
         id: `timeline-${role.id}`,
-        url: `/timeline#${org.id}`,
+        url: `/#${org.id}`, // home page is a one-pager; /timeline still works standalone
         title: `${role.title} — ${org.name}`,
         text: parts.join(" "),
       });
@@ -86,7 +86,7 @@ export async function getSourceDocuments(): Promise<SourceDocument[]> {
   for (const post of posts) {
     docs.push({
       id: `post-${post.slug}`,
-      url: post.source === "site" ? post.url : `/writing`,
+      url: post.source === "site" ? post.url : `/#writing`,
       title: post.title,
       text: `${post.title} — a ${post.kind} post published on ${post.source}${
         post.tags.length ? `, tagged ${post.tags.join(", ")}` : ""

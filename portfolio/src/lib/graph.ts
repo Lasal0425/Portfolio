@@ -95,7 +95,7 @@ export function buildSiteGraph(): SiteGraph {
       label: org.name,
       sublabel: "role",
       kind: "organisation",
-      href: `/timeline#${org.id}`,
+      href: `/#${org.id}`, // home page is a one-pager; /timeline still works standalone
       ...place(id, "organisation", i, timeline.length),
     });
     edges.push({ from: "home", to: id, kind: "structural" });

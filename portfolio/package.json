@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "node --env-file-if-exists=.env.local ./node_modules/.bin/tsx scripts/ingest.ts"
   },
   "dependencies": {
     "@google/genai": "^2.22.0",

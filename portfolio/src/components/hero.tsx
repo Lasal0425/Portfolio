@@ -29,13 +29,13 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link
-              href="/projects"
+              href="/#projects"
               className="border-b border-transparent text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)]"
             >
               View projects
             </Link>
             <Link
-              href="/timeline"
+              href="/#timeline"
               className="border-b border-transparent text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)]"
             >
               See timeline

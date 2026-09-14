@@ -42,7 +42,7 @@ export const FALLBACK_ANSWERS: FallbackAnswer[] = [
     keywords: ["nebule", "work", "job", "employer", "trainee", "intern"],
     answer:
       "Built the nebule.co company website. He's been at Nebule since July 2025 — Software Engineer Intern through December 2025, then Software Engineer Trainee from December 2025.",
-    citations: [{ label: "Timeline — Nebule", url: "/timeline#nebule" }],
+    citations: [{ label: "Timeline — Nebule", url: "/#nebule" }],
   },
 ];
 
@@ -50,8 +50,8 @@ const GENERIC_FALLBACK: Omit<FallbackAnswer, "question" | "keywords"> = {
   answer:
     "Live answering isn't available right now — either the API key isn't configured or the request failed. Try one of the suggested questions, or browse the Timeline, Projects, and Writing pages directly for the same information this assistant would have used.",
   citations: [
-    { label: "Timeline", url: "/timeline" },
-    { label: "Projects", url: "/projects" },
+    { label: "Timeline", url: "/#timeline" },
+    { label: "Projects", url: "/#projects" },
   ],
 };
 

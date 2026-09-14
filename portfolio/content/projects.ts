@@ -29,16 +29,13 @@ export const projects: Project[] = [
     // confirms the brief's claim that it started as yashbim/nlds-website.
     summary:
       "Official website for AIESEC in Sri Lanka's National Conference 2026 — homepage, countdown, registration, and a merch store.",
-    status: "draft",
+    status: "ready",
     repoUrl: "https://github.com/Lasal0425/natcon-website",
     liveUrl: "https://natcon-psi.vercel.app",
     forkOf: "yashbim/nlds-website",
     stack: ["TypeScript", "Next.js"],
     metrics: [],
-    hasCaseStudy: false,
-    // TODO: diff this against yashbim/nlds-website myself in Phase 4 to
-    // describe Lasal's actual changes honestly, rather than asking him to
-    // recall them from memory.
+    hasCaseStudy: true,
   },
   {
     slug: "breast-cancer-detection",

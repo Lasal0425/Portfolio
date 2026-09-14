@@ -3,10 +3,16 @@ import { FileDown } from "lucide-react";
 import { profile } from "@/lib/content";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+// The home page is a one-pager — Timeline/Projects/Writing are sections
+// there (with matching ids), so nav jumps to them by anchor instead of
+// navigating to the standalone /timeline, /projects, /writing pages.
+// Those pages still exist and still work (deep links, sharing a specific
+// list on its own URL) — they're just not the primary nav destination
+// anymore. Ask stays a real separate page; it's a tool, not a list.
 const NAV = [
-  { href: "/timeline", label: "Timeline" },
-  { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
+  { href: "/#timeline", label: "Timeline" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#writing", label: "Writing" },
   { href: "/ask", label: "Ask" },
 ];
 

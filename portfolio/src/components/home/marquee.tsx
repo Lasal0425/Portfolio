@@ -5,7 +5,7 @@ export function StackMarquee() {
   const items = Array.from(new Set(stack.flatMap((g) => g.items)));
   const run = [...items, ...items];
   return (
-    <div data-build-section="Stack band" className="relative z-10 -rotate-[1.2deg] py-6">
+    <div data-build-section="Stack" className="relative z-10 -rotate-[1.2deg] py-6">
       <div
         data-build="block"
         data-label="marquee"

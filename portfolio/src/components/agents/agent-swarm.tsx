@@ -169,7 +169,7 @@ export function AgentSwarm() {
             )}
           </span>
 
-          {enabled && log[0] && (
+          {enabled && log[0] && !stats?.complete && (
             <>
               <span className="mx-1 hidden h-4 w-px bg-[var(--color-border-strong)] lg:block" />
               <span key={log[0].id} className="hidden max-w-[17rem] truncate whitespace-nowrap normal-case tracking-normal lg:block" title={log[0].text}>

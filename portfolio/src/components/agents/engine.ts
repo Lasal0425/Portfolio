@@ -401,7 +401,11 @@ export class Swarm {
       if (!stillPending) {
         this.sectionDone.set(sid, true);
         if (!instant)
-          this.onLog({ agent: "System", color: "#ff5b1f", text: `§ ${sid} shipped ✓` });
+          this.onLog({
+            agent: task.agent?.name ?? "Agents",
+            color: task.agent?.color ?? "#ff5b1f",
+            text: `finished the ${sid} section ✓`,
+          });
       }
     }
   }

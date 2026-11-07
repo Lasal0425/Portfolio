@@ -1,16 +1,21 @@
 # Lasal Rathnayake — Portfolio
 
 AI-engineering portfolio. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4.
-Built around the "Latent Space" concept: the home page's node field is a real,
-navigable map of every project, timeline role, and post — not a decorative
-canvas — and the "Ask about my work" assistant is a real RAG pipeline over
+
+**Version 3 — "built live by agents".** The home page assembles itself as you
+scroll: twelve named agent cursors (one canvas overlay,
+[`src/components/agents`](src/components/agents)) fly to each wireframed
+element, draw a selection box, fill placeholder bars and then reveal the real
+content. Any element opts in with `data-build="title|text|label|block|media|chip|stat"`
+inside a `data-build-section`. Reduced-motion visitors, no-JS visitors and
+anyone who flips the dock's "agents off" switch get the finished page
+immediately. The "Ask about my work" assistant is a real RAG pipeline over
 the site's own content.
 
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack) + **TypeScript** (strict)
 - **Tailwind CSS v4**, tokens defined in [`src/app/globals.css`](src/app/globals.css)
-- **next-themes** for light/dark mode
 - **Zod** for the content schema
 - **@mdx-js/mdx** for project case studies and the RAG pipeline write-up
   (rendered directly via `evaluate()`, not `next-mdx-remote` — see the note
@@ -103,7 +108,7 @@ the site stays on the existing Vercel URL.
 ## Build phases
 
 1. ✅ Scaffold + design tokens + content schema
-2. ✅ Hero + shell (Latent Space concept: node field, header, footer, theme toggle)
+2. ✅ Hero + shell (v2 "Latent Space" node field — replaced in v3)
 3. ✅ Timeline (grouped by org, progressive disclosure)
 4. ✅ Projects as case studies (real architecture diagrams, honest tradeoffs)
 5. ✅ Blog / writing section (live dev.to metadata, split by kind)
@@ -111,6 +116,8 @@ the site stays on the existing Vercel URL.
 7. ✅ Live GitHub integration (hourly ISR, graceful fallback)
 8. ✅ Polish: sitemap, robots.txt, JSON-LD `Person`, dynamic OG image,
    focus states, reduced-motion, WCAG AA contrast
+9. ✅ Version 3: dark poster redesign, live agent-swarm build, boot screen,
+   build dock, cutout hero portrait
 
 ## Known open items
 

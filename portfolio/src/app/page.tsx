@@ -1,42 +1,32 @@
-import { Hero } from "@/components/hero";
-import { TimelineOrgs } from "@/components/timeline-orgs";
-import { ProjectList } from "@/components/project-list";
-import { WritingGroups } from "@/components/writing-groups";
-import { StackSection } from "@/components/stack-section";
+import { AgentSwarm } from "@/components/agents/agent-swarm";
+import { Hero } from "@/components/home/hero";
+import { StackMarquee } from "@/components/home/marquee";
+import { WorkSection } from "@/components/home/work-section";
+import { ExperienceSection } from "@/components/home/experience-section";
+import { AboutSection } from "@/components/home/about-section";
+import { WritingSection } from "@/components/home/writing-section";
+import { ContactSection } from "@/components/home/contact-section";
 import { GitHubActivity } from "@/components/github-activity";
 
+/**
+ * One-pager, assembled live: every `data-build` element below starts as a
+ * wireframe and is built by the agent swarm as its section scrolls into
+ * view (see src/components/agents). Section ids are stable — the Ask
+ * panel's citations link to #timeline, #projects, #writing and the
+ * per-organisation ids inside the timeline.
+ */
 export default function Home() {
   return (
     <main>
+      <AgentSwarm />
       <Hero />
-
-      <section id="timeline" className="scroll-mt-16 border-t border-[var(--color-border)] py-12">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-sm font-medium text-[var(--color-fg-muted)]">Timeline</h2>
-          <div className="mt-6">
-            <TimelineOrgs />
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="scroll-mt-16 border-t border-[var(--color-border)] py-12">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-sm font-medium text-[var(--color-fg-muted)]">Projects</h2>
-          <div className="mt-6">
-            <ProjectList />
-          </div>
-        </div>
-      </section>
-
-      <section id="writing" className="scroll-mt-16 border-t border-[var(--color-border)] py-12">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <h2 className="text-sm font-medium text-[var(--color-fg-muted)]">Writing</h2>
-          <WritingGroups />
-        </div>
-      </section>
-
-      <StackSection />
+      <StackMarquee />
+      <WorkSection />
+      <ExperienceSection />
+      <AboutSection />
+      <WritingSection />
       <GitHubActivity />
+      <ContactSection />
     </main>
   );
 }

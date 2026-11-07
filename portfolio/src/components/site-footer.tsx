@@ -11,80 +11,59 @@ const LINKEDIN_ICON_PATH =
 const DEVTO_ICON_PATH =
   "M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.13.15.13.13.14 2.55.02 2.53-.06 2.9-.29 3.32zm5.05-5.06H12v.36c0 .18-.02.34-.02.36-.02 0-.6.02-1.28.02H10v1.65h.72c.85 0 .95.05.95.5v.6h-.72c-.65 0-.72.03-.72.32 0 .1.02.24.02.32l.02.03h1.4c1.28 0 1.28 0 1.28.02v.71h-1.53c-1.05 0-1.06 0-1.06-.02V8.53h1.3c1.31 0 1.31.02 1.31 0v1.71zm5.13 5.65c-.29.53-.72.75-1.5.75-.66 0-.98-.1-1.28-.4-.4-.4-.4-.5-.43-3.13l-.02-2.4h.72c.63 0 .72.02.72.06 0 .02.02 1.02.04 2.2.02 1.72.05 2.2.15 2.34.16.24.6.24.76-.02.1-.15.13-.6.15-2.32l.02-2.26h1.4l-.02 2.42c-.02 2.36-.02 2.42-.29 2.76z";
 
+export const SOCIAL_ICONS = { github: GITHUB_ICON_PATH, linkedin: LINKEDIN_ICON_PATH, devto: DEVTO_ICON_PATH };
+
+const iconLink =
+  "flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]";
+
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-[var(--color-border)]">
-      <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-medium text-[var(--color-fg)]">{profile.name}</p>
-            <p className="text-sm text-[var(--color-fg-muted)]">{profile.location}</p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-              aria-label="Email Lasal"
-            >
-              <Mail size={16} aria-hidden="true" />
-            </a>
-            <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-              aria-label="GitHub (opens in a new tab)"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d={GITHUB_ICON_PATH} />
-              </svg>
-            </a>
-            <a
-              href={profile.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-              aria-label="LinkedIn (opens in a new tab)"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d={LINKEDIN_ICON_PATH} />
-              </svg>
-            </a>
-            <a
-              href={profile.links.devto}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-              aria-label="dev.to (opens in a new tab)"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d={DEVTO_ICON_PATH} />
-              </svg>
-            </a>
-            <a
-              href={profile.links.medium}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-9 items-center gap-1 rounded-md border border-[var(--color-border)] px-2.5 text-sm text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-              aria-label="Medium (opens in a new tab)"
-            >
-              Medium
-            </a>
-            <a
-              href={profile.resumeUrl}
-              download
-              className="flex h-9 items-center gap-1.5 rounded-md border border-[var(--color-border)] px-2.5 text-sm text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-            >
-              <FileDown size={14} aria-hidden="true" />
-              Resume
-            </a>
-          </div>
+    <footer className="relative z-[2] border-t border-[var(--color-border)] pb-24">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+          <p className="text-[var(--color-fg)]">
+            © {new Date().getFullYear()} {profile.name}
+          </p>
+          <p className="mt-1">{profile.location} · assembled live by 12 agents</p>
         </div>
 
-        <p className="text-xs text-[var(--color-fg-muted)]">
-          © {new Date().getFullYear()} {profile.name}.
-        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <a href={`mailto:${profile.email}`} className={iconLink} aria-label="Email Lasal">
+            <Mail size={15} aria-hidden="true" />
+          </a>
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="GitHub (opens in a new tab)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={GITHUB_ICON_PATH} />
+            </svg>
+          </a>
+          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="LinkedIn (opens in a new tab)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={LINKEDIN_ICON_PATH} />
+            </svg>
+          </a>
+          <a href={profile.links.devto} target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="dev.to (opens in a new tab)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={DEVTO_ICON_PATH} />
+            </svg>
+          </a>
+          <a
+            href={profile.links.medium}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-9 items-center rounded-full border border-[var(--color-border-strong)] px-3 text-xs text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            aria-label="Medium (opens in a new tab)"
+          >
+            Medium
+          </a>
+          <a
+            href={profile.resumeUrl}
+            download
+            className="flex h-9 items-center gap-1.5 rounded-full border border-[var(--color-border-strong)] px-3 text-xs text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          >
+            <FileDown size={13} aria-hidden="true" />
+            Resume
+          </a>
+        </div>
       </div>
     </footer>
   );

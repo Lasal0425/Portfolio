@@ -43,7 +43,7 @@ export default async function SitePostPage({
         })}
         {post.readTimeMinutes ? ` · ${post.readTimeMinutes} min read` : ""}
       </p>
-      <h1 className="mt-2 text-2xl font-semibold text-[var(--color-fg)]">{post.title}</h1>
+      <h1 className="font-display mt-2 text-[clamp(2.2rem,5vw,3.6rem)] text-[var(--color-fg)]">{post.title}</h1>
       <div className="mt-8">{await renderMDX(mdxSource, mdxComponents)}</div>
     </main>
   );

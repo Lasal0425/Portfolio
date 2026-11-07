@@ -45,7 +45,7 @@ export default async function ProjectPage({
       {project.status === "draft" && (
         <p className="mb-2 text-xs uppercase tracking-wide text-[var(--color-fg-muted)]">draft</p>
       )}
-      <h1 className="text-2xl font-semibold text-[var(--color-fg)]">{project.title}</h1>
+      <h1 className="font-display text-[clamp(2.6rem,7vw,4.5rem)] text-[var(--color-fg)]">{project.title}</h1>
       <p className="mt-4 text-[var(--color-fg)]">{project.summary}</p>
 
       {project.forkOf && (

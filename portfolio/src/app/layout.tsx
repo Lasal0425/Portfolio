@@ -41,13 +41,10 @@ const siteUrl = "https://portfolio-murex-five-37.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Lasal Rathnayake — AI Engineer",
+    default: "Lasal Rathnayake",
     template: "%s — Lasal Rathnayake",
   },
   description: profile.tagline,
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 const personJsonLd = {

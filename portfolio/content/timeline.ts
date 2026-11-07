@@ -52,6 +52,7 @@ export const timeline: Organisation[] = [
     id: "aiesec-sri-lanka",
     name: "AIESEC in Sri Lanka",
     logoUrl: "/logos/aiesec-logo-blue.png",
+    iconUrl: "/logos/aiesec-human.png",
     totalDuration: "2 yrs 1 mo total",
     roles: [
       {

@@ -94,6 +94,9 @@ export const organisationSchema = z.object({
   name: z.string(),
   location: z.string().optional(),
   logoUrl: z.string().optional(), // path under /public
+  // Square mark for the experience timeline's role cards. Falls back to
+  // logoUrl on a white tile when an org only has a wordmark.
+  iconUrl: z.string().optional(),
   // Verbatim total duration string from the source (e.g. "1 yr 3 mos total"),
   // not recomputed — overlapping concurrent roles make computing this from
   // the individual role dates unreliable.

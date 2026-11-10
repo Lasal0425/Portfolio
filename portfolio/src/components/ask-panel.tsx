@@ -91,6 +91,9 @@ export function AskPanel() {
           current.usedFallback = !!evt.fallback;
         } else if (evt.type === "token") {
           current.answer += evt.text as string;
+        } else if (evt.type === "reset") {
+          // Server is retrying after a dropped stream — discard the partial answer.
+          current.answer = "";
         } else if (evt.type === "citations") {
           current.citations = evt.items as Citation[];
         } else if (evt.type === "error") {
